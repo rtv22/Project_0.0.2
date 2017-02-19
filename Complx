@@ -1,0 +1,145 @@
+#include <iostream>
+#include <cstdlib>
+#include <conio.h>
+#include <cmath>
+
+using namespace std;
+
+class complx
+{
+public:
+	double sumr, sumi, subr, subi, multr1, multi1, multr2, multi2, divr1, divr2, divi1, divi2;
+	double z, a, b; // z=a+bi
+	double m, j, l;
+	char i, k;
+	int u;
+	complx()
+	{
+		z = 0;
+		a = 0;
+		b = 0;
+
+	}
+
+	void vvod()
+	{
+		cout << "Введите действительную часть первого КЧ a: ";
+		cin >> a;
+		cout << "Введите мнимую часть первого КЧ b: ";
+		cin >> b;
+		cout << "Введите действительную часть второго КЧ j: ";
+		cin >> j;
+		cout << "Введите мнимую часть второго КЧ l: ";
+		cin >> l;
+		cout << "Введите число типа int для умножения и деления u:";
+		cin >> u;
+	}
+	 
+	void add()
+	{
+		sumr = a + j;
+		sumi = b + l;
+	}
+
+	void sub()
+	{
+		subr = a - j;
+		subi = b - l;
+	}
+
+	void mult()
+	{
+		multr1 = u * a;
+		multr2 = u * j;
+		multi1 = u * b;
+		multi2 = u * l;
+	}
+
+	void div()
+	{
+		divr1 = a / u;
+		divr2 = j / u;
+		divi1 = b / u;
+		divi2 = l / u;
+	}
+};
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	complx obj;
+	obj.vvod();
+	if (obj.b < 0)
+	{
+		cout << "1) Число =";
+		cout << obj.a << obj.b << obj.i << endl;
+	}
+	else
+	{
+		cout << "1) Число =";
+		cout << obj.a<< '+' << obj.b << obj.i << endl;
+	}
+	if (obj.l < 0)
+	{
+		cout << "2) Число =";
+		cout << obj.j << obj.l << obj.i;
+	}
+	else
+	{
+		cout << "2) Число =";
+		cout << obj.j << '+' << obj.l << obj.i;
+	}
+	cout<<endl;
+	/*cout << "Сложение комплексных чисел:";
+	cout << obj.a << '+' << obj.b << obj.i << '+' << obj.j << '+' << obj.l << obj.i<< '=';*/
+
+	obj.add(); //сложение КЧ
+	if (obj.sumi < 0)
+		cout << "Результат сложения=" << obj.sumr << obj.sumi << 'i';
+	else
+		cout << "Результат сложения=" << obj.sumr << '+' << obj.sumi << 'i';
+	cout << endl << endl << endl;
+
+	obj.sub();// вычитание КЧ
+	if (obj.subi < 0)
+		cout << "Результат вычитания=" << obj.subr << obj.subi << 'i';
+	else 
+		cout << "Результат вычитания=" << obj.subr << '+' << obj.subi << 'i';
+	cout << endl;
+	cout << endl;
+	cout << endl;
+
+	obj.mult(); //умножение КЧ
+	if (obj.multi1 < 0) 
+		cout << "Результат умножения=" << obj.multr1 << obj.multi1 << 'i' << endl;
+	else
+		cout << "Результат умножения=" << obj.multr1 << '+' << obj.multi1 << 'i' << endl;
+	if (obj.multi2 < 0)
+		cout << "Результат умножения=" << obj.multr2 << obj.multi2 << 'i' << endl;
+	else
+		cout << "Результат умножения=" << obj.multr2 << '+' << obj.multi2 << 'i' << endl;
+
+	cout << endl;
+	cout << endl;
+	cout << endl;
+
+	obj.div();
+	if (obj.u == 0)
+		cout << "ERROR";
+	else
+	{
+		if (obj.divi1 < 0) //деление КЧ
+			cout << "Результат деления=" << obj.divr1 << obj.divi1 << 'i' << endl;
+		else
+			cout << "Результат деления=" << obj.divr1 << '+' << obj.divi1 << 'i' << endl;
+		if (obj.divi2 < 0)
+			cout << "Результат деления=" << obj.divr2 << obj.divi2 << 'i' << endl;
+		else 
+			cout << "Результат деления=" << obj.divr2<< '+' << obj.divi2 << 'i' << endl;
+	}
+
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	system ("pause");
+}
