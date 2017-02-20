@@ -1,0 +1,94 @@
+#include <iostream>
+
+using namespace std;
+
+class complex
+{
+private:
+	double real;
+	double imagine;
+public:
+	void set(double a, double b) 
+	{
+		real = a;
+		imagine = b; 
+	}
+	void get()
+	{
+		if (imagine < 0)
+			cout << real << imagine << 'i' << endl;
+		else
+			cout << real << '+' << imagine << 'i' << endl;
+	}
+	void sum(double a, double c)
+	{
+		if ((imagine+c) < 0)
+			cout << "Результат сложения: " << real+a << imagine+c << 'i' << endl;
+		else
+			cout << "Результат сложения: " << real+a << '+' << imagine+c << 'i' << endl;
+	}
+
+	void sub(double a, double c)
+	{
+		if ((c - imagine) < 0)
+			cout << "Результат вычитания: " << a-real << c-imagine << 'i' << endl;
+		else
+			cout << "Результат вычитания: " << a - real << '+' << c - imagine << 'i' << endl;
+	}
+	void mult(int n, double a, double c)
+	{
+		if ((imagine) < 0)
+			cout << "Результат умножения 1-го КЧ на n: " << a * n << c << 'i' << endl;
+		else
+			cout << "Результат умножения 1-го КЧ на n: " << a * n << '+' << c << 'i' << endl;
+		if ((imagine) < 0)
+			cout << "Результат умножения 2-го КЧ на n: " << real * n << imagine << 'i' << endl;
+		else
+			cout << "Результат умножения 2-го КЧ на n: " << real * n <<'+'<< imagine << 'i' << endl;
+	}
+	void div(int n, double a, double c)
+	{
+		if (n == 0)
+			cout << "Результат деления :ERROR";
+		else
+	{
+		if ((imagine) < 0)
+			cout << "Результат деления 1-го КЧ на n: " << a / n << c << 'i' << endl;
+		else
+			cout << "Результат деления 1-го КЧ на n: " << a / n << '+' << c << 'i' << endl;
+		if ((imagine) < 0)
+			cout << "Результат деления 2-го КЧ на n: " << real / n << imagine << 'i' << endl;
+		else
+			cout << "Результат деления 2-го КЧ на n: " << real / n << '+' << imagine << 'i' << endl;
+	}
+	}
+};
+
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	double real, imaginary, real1, imaginary1;
+	int n;
+	cout << "Действительная часть 1 КЧ: ";    
+	cin >> real;
+	cout << "Мнимая часть 1 КЧ: ";   
+	cin >> imaginary;
+	complex obj;
+	obj.set(real, imaginary);
+	cout << "Число 1)";
+	obj.get();
+	cout << "Действительная часть 2 КЧ: ";    
+	cin >> real1;
+	cout << "Мнимая часть 2 КЧ: ";    
+	cin >> imaginary1;
+	obj.set(real1, imaginary1);
+	cout << "Число 2)";
+	obj.get();
+	obj.sum(real, imaginary);
+	obj.sub(real, imaginary);
+	cout << "Введите переменную типа int n:";
+	cin >> n;
+	obj.mult(n, real, imaginary);
+	obj.div(n, real, imaginary);
+	system("pause");
+}
