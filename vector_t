@@ -1,0 +1,71 @@
+#include <iostream>
+#include <vector>
+#include <string>
+	
+using namespace std;
+
+class vector_t
+{
+private:
+	unsigned int size;
+	unsigned int capacity;
+	int *ptr;
+	//auto swap(vector_t& other) -> void;
+public:
+	vector_t();
+	vector_t(unsigned int);
+	vector_t(vector_t&);
+	auto operator=(const vector_t& other)->vector_t&;
+	~vector_t();
+	auto push_back(int) -> void;
+	//auto size() const noexcept -> unsigned int;
+	//auto capacity() const noexcept -> unsigned int;
+};
+
+vector_t::vector_t(){
+	size = 0;
+}
+
+//auto vector_t::size() const noexcept -> unsigned int{
+//	return size;
+//}
+//
+//auto vector_t::capacity() const noexcept -> unsigned int{
+//	return capacity;
+//}
+
+auto vector_t::operator=(const vector_t& other)->vector_t& {
+	delete[] ptr;
+	size = other.size;
+	ptr = new int[other.size];
+	ptr[size] = other.ptr[size];
+	return *this;
+}
+ 
+auto vector_t::push_back(int value) -> void{
+	vector_t ptr;
+	ptr.push_back(value);
+}
+
+vector_t::vector_t(unsigned int size){   //конструктор с параметрами
+	vector<int>ptr(size);
+	ptr.reserve(size);
+	for (int i = 0; i < size; i++) {
+		cout << ptr[i] << ' ';
+	}
+}
+
+vector_t::~vector_t(){
+	delete[] ptr;
+}
+
+int main(){
+	unsigned int size, value;
+	cout << "size: ";
+	cin >> size;
+	vector_t rez(size);
+	cout<< endl << "value: ";
+	cin >> value;
+	rez.push_back(value);
+	system("pause");
+}
